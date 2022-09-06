@@ -4,7 +4,7 @@ import { Container } from './styles';
 export default function Header(){
   return(
     <Container>
-      Github Profiles
+      <h1>Github <span>Users</span></h1>
     </Container>
   )
 }
