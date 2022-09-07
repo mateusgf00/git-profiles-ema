@@ -1,10 +1,11 @@
-import React from "react";
-import { Container } from "./styles";
+import { Container, InputSearchContainer } from "./styles";
 
 export default function Home(){
   return(
     <Container>
-      Hello
+      <InputSearchContainer>
+                <input type="text" id="search-input" placeholder="Search for a user..."/>
+      </InputSearchContainer>
     </Container>
   )
 }

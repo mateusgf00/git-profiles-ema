@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.header`
+export const Container = styled.div`
   background-color: #2b961f;
   text-align: center;
   height: 100px;

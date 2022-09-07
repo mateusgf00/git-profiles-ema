@@ -6,5 +6,8 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: 'Sora', sans-serif;
+        body{
+            background-color: #f5f5f5;
+        }
     }
 `;
