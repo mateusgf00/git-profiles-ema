@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import UserDetail from "../../components/userDetail";
 import userService from "../../service/userService";
 import { Container, InputSearchContainer } from "./styles";
 
 interface User {
-  name: string,
-  username: string
+  avatar_url: string,
+  username: string,
+  followers: number,
+  count_repositories: number
 }
 
 
@@ -35,6 +38,12 @@ export default function Home(){
       <InputSearchContainer>
                 <input type="text" id="search-input" placeholder="Search for a user..."/>
       </InputSearchContainer>
+      <UserDetail
+        username={user?.username}
+        avatar_url={user?.avatar_url}
+        followers={user?.followers}
+        count_repositories={user?.count_repositories}
+      />
     </Container>
   )
 }
