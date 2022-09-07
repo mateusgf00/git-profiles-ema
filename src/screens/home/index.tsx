@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { render } from '@testing-library/react';
 import UserDetail from "../../components/userDetail";
 import userService from "../../service/userService";
 import { Container, InputSearchContainer } from "./styles";
+import ModalAlert from "../../components/modalAlert";
 
 import { IRepositories } from "../../model/repositories";
 import { IUser } from "../../model/users";
@@ -10,6 +12,7 @@ export default function Home() {
   const [user, setUser] = useState<IUser>();
   const [newestRepositories, setNewestRepositories] = useState<[IRepositories]>();
   const [mostPopularRepositories, setMostPopularRepositories] = useState<[IRepositories]>();
+  
 
   useEffect(() => {
     function search() {
@@ -18,6 +21,11 @@ export default function Home() {
         if (e.key === "Enter") {
           if (input.value) {
             const user = await userService.getUserbyId(input.value);
+            
+            console.log(user);
+            if(!user.login){
+              return render(<ModalAlert />);
+            }
             setUser(user);
 
             loadRepositories(user?.login);
