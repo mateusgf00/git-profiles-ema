@@ -24,17 +24,3 @@ export const Container = styled.div`
 
   }
 `;
-
-export const ContainerUserInformation = styled.div`
-  margin-left: 20px;
-  margin-right: 20px;
-
-`;
-
-export const ContainerNewestRepositories = styled.div`
-  margin-right: 20px;
-`;
-
-export const ContainerMostPopularRepositories = styled.div`
-
-`;

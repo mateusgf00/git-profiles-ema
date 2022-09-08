@@ -1,12 +1,8 @@
 import { IRepositories } from "../../models/repositories";
-import Image from 'react-bootstrap/Image';
-import {
-  Container,
-  ContainerUserInformation,
-  ContainerNewestRepositories,
-  ContainerMostPopularRepositories,
-} from "./styles";
+import Image from "react-bootstrap/Image";
+import { Container } from "./styles";
 import ListRepositories from "../listRepositories";
+import UserInformation from "../userInformation";
 
 interface IProps {
   avatar_url: string | undefined;
@@ -17,27 +13,23 @@ interface IProps {
   mostPopularRepositories: [IRepositories] | undefined;
 }
 
-
-
 export default function UserDetail(props: IProps) {
   return (
     <Container>
-      <Image rounded src={props.avatar_url}/>
-
-      <ContainerUserInformation>
-        <p><strong>Username:</strong> {props.login}</p>
-        <p><strong>Followers:</strong> {props.followers}</p>
-        <p><strong>Repositories count:</strong> {props.public_repos}</p>
-      </ContainerUserInformation>
-      <ListRepositories 
-      repositories={props.newestRepositories}
-      title="Newest Repos"
+      <Image rounded src={props.avatar_url} />
+      <UserInformation
+        login={props.login}
+        followers={props.followers}
+        public_repos={props.public_repos}
       />
-      <ListRepositories 
-      repositories={props.mostPopularRepositories}
-      title="Most Popular Repos"
+      <ListRepositories
+        repositories={props.newestRepositories}
+        title="Newest Repos"
       />
-     
+      <ListRepositories
+        repositories={props.mostPopularRepositories}
+        title="Most Popular Repos"
+      />
     </Container>
   );
 }
