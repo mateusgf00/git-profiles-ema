@@ -72,13 +72,8 @@ export default function Home() {
       <InputGroup className="mb-3">
         <Form.Control
           placeholder="Search one user..."
-          aria-label="Search one user..."
-          aria-describedby="basic-addon2"
           id="search-input"
         />
-        <Button variant="outline-success" id="button-addon2">
-          Search
-        </Button>
       </InputGroup>
       </InputSearchContainer>
       {user && (
