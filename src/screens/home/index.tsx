@@ -4,9 +4,12 @@ import UserDetail from "../../components/userDetail";
 import userService from "../../service/userService";
 import { Container, InputSearchContainer } from "./styles";
 import ModalAlert from "../../components/modalAlert";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
-import { IRepositories } from "../../model/repositories";
-import { IUser } from "../../model/users";
+import { IRepositories } from "../../models/repositories";
+import { IUser } from "../../models/users";
 
 export default function Home() {
   const [user, setUser] = useState<IUser>();
@@ -66,11 +69,17 @@ export default function Home() {
   return (
     <Container>
       <InputSearchContainer>
-        <input
-          type="text"
+      <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Search one user..."
+          aria-label="Search one user..."
+          aria-describedby="basic-addon2"
           id="search-input"
-          placeholder="Search for a user..."
         />
+        <Button variant="outline-success" id="button-addon2">
+          Search
+        </Button>
+      </InputGroup>
       </InputSearchContainer>
       {user && (
         <UserDetail

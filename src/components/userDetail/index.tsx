@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { IRepositories } from "../../model/repositories";
-import userService from "../../service/userService";
+import { IRepositories } from "../../models/repositories";
+import Image from 'react-bootstrap/Image';
 import {
   Container,
   ContainerUserInformation,
   ContainerNewestRepositories,
   ContainerMostPopularRepositories,
 } from "./styles";
+import ListRepositories from "../listRepositories";
 
 interface IProps {
   avatar_url: string | undefined;
@@ -22,43 +22,22 @@ interface IProps {
 export default function UserDetail(props: IProps) {
   return (
     <Container>
-      <img src={props.avatar_url}>
-      </img>
+      <Image rounded src={props.avatar_url}/>
+
       <ContainerUserInformation>
-        <p>Username: {props.login}</p>
-        <p>Followers: {props.followers}</p>
-        <p>Repositories count: {props.public_repos}</p>
+        <p><strong>Username:</strong> {props.login}</p>
+        <p><strong>Followers:</strong> {props.followers}</p>
+        <p><strong>Repositories count:</strong> {props.public_repos}</p>
       </ContainerUserInformation>
-      <ContainerNewestRepositories>
-        {props.newestRepositories && props.newestRepositories.length && (
-          <table>
-            <tbody>
-              {props.newestRepositories.map((obj, index) => (
-                <tr key={index}>
-                  <td>
-                    <a href={obj.html_url}>{obj.name}</a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </ContainerNewestRepositories>
-      <ContainerMostPopularRepositories>
-        {props.mostPopularRepositories && props.mostPopularRepositories.length && (
-          <table>
-            <tbody>
-              {props.mostPopularRepositories.map((obj, index) => (
-                <tr key={index}>
-                  <td>
-                    <a href={obj.html_url}>{obj.name}</a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </ContainerMostPopularRepositories>
+      <ListRepositories 
+      repositories={props.newestRepositories}
+      title="Newest Repos"
+      />
+      <ListRepositories 
+      repositories={props.mostPopularRepositories}
+      title="Most Popular Repos"
+      />
+     
     </Container>
   );
 }

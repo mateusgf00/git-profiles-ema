@@ -8,6 +8,7 @@ export const Container = styled.div`
   h1 {
     color:  #ffffff;
     padding-top: 25px;
+    font-weight: bold;
   }
 
   span {
